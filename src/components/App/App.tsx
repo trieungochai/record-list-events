@@ -1,6 +1,12 @@
 import React from "react";
 
+import Recorder from "../Recorder/Recorder";
+
 const App: React.FC = () => {
-  return <div>See you Space Cowboy!!!</div>;
+  return (
+    <div>
+      <Recorder />
+    </div>
+  );
 };
 export default App;

@@ -18,6 +18,12 @@
 
 ### 3. Setting Up Redux
 
-`npm install -S redux react-redux`
+`npm install --save-exact @types/react-redux@7.1.15 react-redux@7.2.2 redux@4.0.5 redux-thunk@2.3.0`
 
-`npm install -S @types/react-redux`
+---
+
+### 4. A simple JavaScript utility for conditionally joining classNames together
+
+`npm install -S classnames`
+
+`npm install -S @types/classnames`
