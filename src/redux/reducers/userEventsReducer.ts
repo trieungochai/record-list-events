@@ -1,11 +1,6 @@
-import { AnyAction } from "redux";
-
-interface UserEvent {
-  id: number;
-  title: string;
-  dateStart: string;
-  dateEnd: string;
-}
+import { ActionType } from "../action-types";
+import { Action } from "../actions";
+import { UserEvent } from "../userEvent";
 
 interface UserEventsState {
   byIds: Record<UserEvent["id"], UserEvent>;
@@ -19,9 +14,19 @@ const initialState: UserEventsState = {
 
 const userEventsReducer = (
   state: UserEventsState = initialState,
-  action: AnyAction
+  action: Action
 ) => {
   switch (action.type) {
+    case ActionType.LOAD_SUCCESS:
+      const { events } = action.payload;
+      return {
+        ...state,
+        allIds: events.map(({ id }) => id),
+        byIds: events.reduce<UserEventsState["byIds"]>((byIds, event) => {
+          byIds[event.id] = event;
+          return byIds;
+        }, {}),
+      };
     default:
       return state;
   }
